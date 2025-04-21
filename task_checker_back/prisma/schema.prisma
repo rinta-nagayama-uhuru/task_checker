@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -14,19 +13,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Task{
-  id              Int       @default(autoincrement()) @id
-  name            String
-  explanation     String
-  deadlineDate    DateTime
-  image_url       String?
-  status          Int
-  genreId         Int
-  genre           Genre     @relation(fields: [genreId], references: [id])
+model Task {
+  id           Int      @default(autoincrement()) @id
+  name         String
+  explanation  String
+  deadlineDate DateTime
+  image_url    String?
+  status       Int
+  genreId      Int
+  genre        Genre    @relation(fields: [genreId], references: [id])
 }
 
-model Genre{
-  id              Int       @default(autoincrement()) @id
-  name            String
-  tasks           Task[]
+
+model Genre {
+  id    Int    @default(autoincrement()) @id
+  name  String
+  tasks Task[] 
 }
