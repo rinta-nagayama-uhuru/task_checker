@@ -1,10 +1,10 @@
 <script setup>
-
+import GenreBody from './GenreBody.vue'
 </script>
 
 <template>
   <Modal v-model="showModal">
-    <p>モーダルの中身</p>
+    <GenreBody />
   </Modal>
 </template>
 
