@@ -1,6 +1,11 @@
-const express = require("express");
+const express = require("express")
 const app = express();
 app.use(express.json());
+
+// prismaの読み込み
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
 
 // 全タスクの取得処理
 app.get("/tasks", async(req, res) => {
@@ -23,6 +28,6 @@ app.get("/genres", async(req, res) => {
   }
 })
 
-app.listen(3000, () =>{
-  console.log("Listening on localhost 3000")
+app.listen(3000, () => {
+  console.log("listening on localhost 3000")
 })
