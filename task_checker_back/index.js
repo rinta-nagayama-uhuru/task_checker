@@ -29,7 +29,7 @@ app.get("/tasks", async(req, res) => {
 
 
 // 全ジャンルの取得処理
-app.get("/genres", async(req, res) => {
+app.get("/genres", async(_, res) => {
   try {
   const AllGenres = await prisma.genre.findMany();
   res.json(AllGenres)
