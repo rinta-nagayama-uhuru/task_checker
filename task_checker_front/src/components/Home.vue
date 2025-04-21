@@ -14,7 +14,7 @@
     <div class="genre">
       <Select />
       <AddCircleIcon class="add_circle_outline_icon" @click="showModal = true"/>
-      <FormModal v-model="showModal"/>
+      <FormModal v-model="showModal" body="genreBody"/>
     </div>
     <div class="contents">
       <ToDoList/>
