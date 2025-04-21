@@ -26,11 +26,10 @@ services:
     container_name: db
     image: "postgres:14.11"
     ports:
-      - "5433:5432"
+      - 5433:5432
     env_file:
       - ./task_checker_back/.env
     volumes:
       - taskchecker-db-volume:/var/lib/postgresql/data
-
 volumes:
-taskchecker-db-volume:
+  taskchecker-db-volume:

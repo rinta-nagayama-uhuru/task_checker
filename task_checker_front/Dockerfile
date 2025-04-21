@@ -1,5 +1,5 @@
 # nodeのLTSバージョンを指定する
-FROM node:nodeのLTSバージョンを指定する
+FROM node:lts
 
 # コンテナ内の作業ディレクトリを/appに指定。
 WORKDIR /app
