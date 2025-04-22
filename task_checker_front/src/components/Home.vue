@@ -4,9 +4,9 @@
   import ToDoList from './ToDoList.vue'
   import AddCircleIcon from'vue-material-design-icons/PlusCircleOutline.vue'
   import FormModal from './FormModal.vue'
-  import api from '../api/axios'
   import { ref, onMounted } from 'vue'
   import { useTaskStore } from '../stores/TaskStore'
+  import { useGenreStore } from '../stores/GenreStore'
   const showModal = ref(false);
   const taskStore = useTaskStore();
 
@@ -18,8 +18,7 @@
     }
 
     try{
-      const AllGenres = await api.get('/genres')
-      console.log(AllGenres)
+      await useGenreStore.fetchAllGenres();
     }catch(error){
       console.log(error)
     }
