@@ -11,10 +11,18 @@ const formattedDeadlineDate = computed(() => {
   return date.toLocaleDateString('jp-JP')
 })
 
+const taskStyle = computed(() => {
+  const isDeadlineAfterToDay = new Date(props.task.deadlineDate) > new Date();
+
+  return {
+    backgroundColor: isDeadlineAfterToDay ? 'white' : 'rgb(250, 194, 194)',
+  };
+})
+
 </script>
 
 <template>
-  <div class="task">
+  <div class="task" :style="taskStyle">
     <span class="task_date">{{ formattedDeadlineDate }}</span>
     <div class="task_text_contents">
       <h3 class="task_title">{{ task.name }}</h3>
