@@ -32,7 +32,7 @@ const toggleShowTasks = () => {
       <FormModal v-model="showModal" body="taskBody" />
     </div>
     <div v-if="showTask">
-      <div class="task_field" v-for="task in taskStore.tasks" :key="task.id">
+      <div class="task_field" v-for="task in props.tasks" :key="task.id">
         <Task :task="task"/>
       </div>
     </div>

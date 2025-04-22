@@ -41,7 +41,7 @@
     "Doing(ToDay)",
     "WIP",
     "Check",
-    "Done"
+    "Done",
   ]
 </script>
 
@@ -55,7 +55,7 @@
     </div>
     <div class="contents">
       <div v-for="(status, index) in taskStatusElements" :key="index">
-        <ToDoList :task="filterTasksByStatus(index)" :key="index" :status="status"/>
+        <ToDoList :tasks="filterTasksByStatus(index)" :key="index" :status="status"/>
       </div>
     </div>
   </div>
