@@ -1,6 +1,16 @@
 const express = require("express")
 const app = express();
+// corsをインポート
+const cors = require("cors")
+
 app.use(express.json());
+
+// corsをインポートして、アプリケーションに適用させる記述
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 
 // prismaの読み込み
 const { PrismaClient } = require('@prisma/client');
@@ -19,7 +29,7 @@ app.get("/tasks", async(req, res) => {
 
 
 // 全ジャンルの取得処理
-app.get("/genres", async(req, res) => {
+app.get("/genres", async(_, res) => {
   try {
   const AllGenres = await prisma.genre.findMany();
   res.json(AllGenres)

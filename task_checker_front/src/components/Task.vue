@@ -1,13 +1,32 @@
 <script setup>
 import Select from './Select.vue'
+import { computed } from 'vue'
+const props = defineProps({
+  task: Object
+})
+
+const formattedDeadlineDate = computed(() => {
+  const date = new Date(props.task.deadlineDate)
+
+  return date.toLocaleDateString('jp-JP')
+})
+
+const taskStyle = computed(() => {
+  const isDeadlineAfterToDay = new Date(props.task.deadlineDate) > new Date();
+
+  return {
+    backgroundColor: isDeadlineAfterToDay ? 'white' : 'rgb(250, 194, 194)',
+  };
+})
+
 </script>
 
 <template>
-  <div class="task">
-    <span class="task_date">2021-01-01</span>
+  <div class="task" :style="taskStyle">
+    <span class="task_date">{{ formattedDeadlineDate }}</span>
     <div class="task_text_contents">
-      <h3 class="task_title">タスク名</h3>
-      <p class="task_sentence">タスクの説明</p>
+      <h3 class="task_title">{{ task.name }}</h3>
+      <p class="task_sentence">{{ task.explanation }}</p>
       <div class="image-container">
         <div class="image-wrapper">
           <img
