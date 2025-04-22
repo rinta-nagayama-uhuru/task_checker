@@ -24,13 +24,18 @@
       console.log(error)
     }
   })
+
+  const changeSelectedGenreId = (e) => {
+    const selectGenreId = e.target.value;
+    taskStore.filterTasks(selectGenreId);
+  }
 </script>
 
 <template>
   <div class="main">
     <Header />
     <div class="genre">
-      <Select />
+      <Select @change="changeSelectedGenreId"/>
       <AddCircleIcon class="add_circle_outline_icon" @click="showModal = true"/>
       <FormModal v-model="showModal" body="genreBody"/>
     </div>

@@ -21,7 +21,7 @@ const taskStore = useTaskStore();
       />
       <FormModal v-model="showModal" body="taskBody" />
     </div>
-    <div class="task_field" v-for="task in taskStore.tasks" :key="task.id">
+    <div class="task_field" v-for="task in taskStore.filteredTasks" :key="task.id">
       <Task :task="task"/>
     </div>
   </div>
