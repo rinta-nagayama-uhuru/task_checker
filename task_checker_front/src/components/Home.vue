@@ -9,6 +9,7 @@
   import { useGenreStore } from '../stores/GenreStore'
   const showModal = ref(false);
   const taskStore = useTaskStore();
+  const genreStore = useGenreStore();
 
   onMounted(async() =>{
     try{
@@ -18,7 +19,7 @@
     }
 
     try{
-      await useGenreStore.fetchAllGenres();
+      await genreStore.fetchAllGenres();
     }catch(error){
       console.log(error)
     }
