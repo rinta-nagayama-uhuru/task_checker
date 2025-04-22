@@ -36,13 +36,12 @@
   }
 
   const taskStatusElements = [
-      "ToDo",
-      "Pending",
-      "Doing(ToDay)",
-      "WIP",
-      "Check",
-      "Done",
-
+    "ToDo",
+    "Pending",
+    "Doing(ToDay)",
+    "WIP",
+    "Check",
+    "Done"
   ]
 </script>
 
