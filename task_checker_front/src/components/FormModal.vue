@@ -10,11 +10,17 @@ const props = defineProps({
 const component = computed(() =>{
   return props.body === 'taskBody' ? TaskBody : GenreBody
 })
+
+const emit = defineEmits('close-modal')
+
+const closeModal = () => {
+  emit('close-modal')
+}
 </script>
 
 <template>
   <Modal v-model="showModal">
-    <component :is="component"/>
+    <component :is="component" @close-modal="closeModal"/><!-- :is属性によって10行目を使って動的に表示するものを変更する -->
   </Modal>
 </template>
 

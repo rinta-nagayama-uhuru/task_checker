@@ -17,6 +17,10 @@ const props = defineProps({
 const toggleShowTasks = () => {
   showTask.value = !showTask.value
 }
+
+const closeModal = () => {
+  showModal.value = false
+}
 </script>
 
 <template>
@@ -29,7 +33,7 @@ const toggleShowTasks = () => {
         class="add_circle_outline_icon"
         @click="showModal = true"
       />
-      <FormModal v-model="showModal" body="taskBody" />
+      <FormModal v-model="showModal" body="taskBody" @close-modal="closeModal"/>
     </div>
     <div v-if="showTask">
       <div class="task_field" v-for="task in props.tasks" :key="task.id">

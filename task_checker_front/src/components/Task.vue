@@ -27,12 +27,12 @@ const taskStyle = computed(() => {
     <div class="task_text_contents">
       <h3 class="task_title">{{ task.name }}</h3>
       <p class="task_sentence">{{ task.explanation }}</p>
-      <div class="image-container">
+      <div v-if="task.image_url" class="image-container">
         <div class="image-wrapper">
           <img
-            :src="'https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg'"
+            :src="task.image_url"
             class="task-image"
-            />
+          />
         </div>
       </div>
     </div>
