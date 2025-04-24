@@ -21,6 +21,7 @@ const handleImageUpload = (event) => {
 
 const submitTask = async() => {
   useTaskStore.addTask(task.value);
+  emit('close-modal')
 }
 </script>
 
