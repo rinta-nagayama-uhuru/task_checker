@@ -26,7 +26,7 @@ export const useTaskStore = defineStore('task', () => {
     }
   }
 
-  async function addTask(newTask){
+  async function addTask(newTask) {
     try{
       const formData = new FormData();
       formData.append('name', newTask.name);
@@ -42,8 +42,7 @@ export const useTaskStore = defineStore('task', () => {
         }
       });
       const addedTask = response.data;
-      tasks.value.push(addedTask);
-    } catch(error){
+    }catch(error){
       console.log('タスクデータの保存ができませんでした', error);
     }
   }

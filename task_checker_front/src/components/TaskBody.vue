@@ -1,7 +1,7 @@
 <script setup>
 import Select from './Select.vue'
 import { ref } from 'vue'
-import { useTaskStore } from '@/stores/TaskStore'
+import { useTaskStore } from '../stores/TaskStore'
 const task = ref({
   name: '',
   explanation: '',
@@ -10,6 +10,8 @@ const task = ref({
   status: 0,
   genreId: ''
 })
+const taskStore = useTaskStore();
+const emit = defineEmits(['close-modal'])
 
 const genreSelect = (e) => {
   task.value.genreId = Number(e.target.value)
@@ -20,7 +22,7 @@ const handleImageUpload = (event) => {
 };
 
 const submitTask = async() => {
-  useTaskStore.addTask(task.value);
+  taskStore.addTask(task.value);
   emit('close-modal')
 }
 </script>
@@ -40,7 +42,7 @@ const submitTask = async() => {
       <h4 class="input_title">期限</h4>
       <input class="input_date" type="date" v-model="task.deadlineDate"/>
       <h4 class="input_title">画像</h4>
-      <input type="file" @change="handleImageUpload" accept="image/*" />
+      <input type="file" @change="handleImageUpload" accept="image/*"/>
     </div>
     <input class="input_submit" type="button" value="送信" @click="submitTask"/>
   </form>

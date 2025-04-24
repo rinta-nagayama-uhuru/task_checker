@@ -19,7 +19,7 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
 //クライアントがブラウザから画像にアクセスするためのURL
-app.use('uploads', express.static('uploads'))
+app.use('/uploads', express.static('uploads'))
 
 // prismaの読み込み
 const { PrismaClient } = require('@prisma/client');
@@ -31,7 +31,7 @@ app.get("/tasks", async(req, res) => {
   try {
   const AllTasks = await prisma.task.findMany();
   const updatedTasks = AllTasks.map((task) => {
-    if(task.image_url){
+    if (task.image_url) {
       task.image_url = `http://localhost:3000/${task.image_url}`
     } else {
       task.image_url = null;
@@ -56,7 +56,7 @@ app.get("/genres", async(_, res) => {
   }
 })
 
-app.post("/tasks", uploads.single('image_url'), async(req, res) => {
+app.post("/tasks", upload.single('image_url'), async(req, res) => {
   console.log("リクエストボディ", req.body)
   try {
     const imagePath = req.file ? req.file.path : null;
