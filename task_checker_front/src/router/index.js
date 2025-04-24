@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import SignIn from '../components/SignIn.vue';
 import SignUp  from '../components/SignUp.vue';
 import Home from '../components/Home.vue';
+import SearchResult from '../components/SearchResult.vue';
 import { auth, onAuthStateChanged } from '../firebase.js';
 
 const routes = [
@@ -22,6 +23,12 @@ const routes = [
     name: 'Home',
     component: Home
   },
+
+  {
+    path: '/search',
+    name: 'SearchResult',
+    component: SearchResult
+  }
 ]
 
 const router = createRouter({
