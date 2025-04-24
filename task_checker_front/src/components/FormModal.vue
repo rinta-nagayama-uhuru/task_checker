@@ -14,7 +14,7 @@ const component = computed(() =>{
 
 <template>
   <Modal v-model="showModal">
-    <component :is="component"/>
+    <component :is="component"/><!-- :is属性によって10行目を使って動的に表示するものを変更する -->
   </Modal>
 </template>
 
