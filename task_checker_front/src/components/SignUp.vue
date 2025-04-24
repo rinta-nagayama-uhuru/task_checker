@@ -2,7 +2,7 @@
 import Header from './Header.vue'
 import { ref } from 'vue'
 import { auth, createUserWithEmailAndPassword } from '../firebase';
-import { userRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const email = ref('');
 const password = ref('');
