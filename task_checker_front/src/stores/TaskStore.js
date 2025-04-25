@@ -49,14 +49,14 @@ export const useTaskStore = defineStore('task', () => {
   }
 
   async function taskSearch(query) {
-    if (!query) return ;
+    if (!query) return;
     try {
-      const response = await api.get('/search' , {
-        params: { q: query},
+      const response = await api.get('/search', {
+        params: { q: query },
       });
-      searchResults.value = response.data;//検索結果を保存
-    } catch(error){
-      console.log("検索に失敗しました", error);
+      searchResults.value = response.data; // 検索結果を保存
+    } catch (error) {
+      console.error('検索に失敗しました:', error);
     }
   }
 

@@ -89,7 +89,7 @@ app.get('/search', async (req, res) => {
   const query = req.query.q || '';
   try {
     //タイトルにクエリを含む投稿を検索
-    const task = await prisma.task.findMany({
+    const tasks = await prisma.task.findMany({
       where: {
         name: {
           contains: query,    //タイトルにクエリを含む
@@ -103,7 +103,7 @@ app.get('/search', async (req, res) => {
 
     const updatedTasks = tasks.map((task) => {
       if (task.image_url) {
-        task.image_url = `http://localhost:3000'${task.image_url}`
+        task.image_url = `http://localhost:3000/'${task.image_url}`
       } else {
         task.image_url = null;
       }
